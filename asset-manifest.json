@@ -1,0 +1,12 @@
+{
+  "files": {
+    "main.js": "/static/js/main.cb30eced.js",
+    "static/js/27.10004d4a.chunk.js": "/static/js/27.10004d4a.chunk.js",
+    "static/media/full_logo.svg": "/static/media/full_logo.d7ab235b7008f9f68f8c911aa508c8c6.svg",
+    "static/media/logo.svg": "/static/media/logo.3e8665b09a29fa0ca47fa06060b62d28.svg",
+    "index.html": "/index.html"
+  },
+  "entrypoints": [
+    "static/js/main.cb30eced.js"
+  ]
+}
