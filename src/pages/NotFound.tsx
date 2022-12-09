@@ -21,7 +21,9 @@ function NotFound() {
               <Heading size="4xl">404</Heading>
             </Center>
             <Center>
-              <Text fontSize="xl">Sorry, this page could not be found.</Text>
+              <Text fontSize={["sm", "xl"]}>
+                Sorry, this page could not be found.
+              </Text>
             </Center>
           </Stack>
           <Center>

@@ -14,7 +14,6 @@ import {
 } from "@chakra-ui/react";
 import { Link as RLink } from "react-router-dom";
 
-import logo from "../../assets/images/logo.svg";
 import full_logo from "../../assets/images/full_logo.svg";
 import { getUser, logout } from "../../hooks/auth";
 
@@ -24,7 +23,7 @@ function Header() {
       <Container minW="full" ml="auto" mr="auto" pl="20px" pr="20px">
         <Stack direction="row" h="77px" justifyContent="space-between">
           <Link
-            display={["none", "block"]}
+            display={["block", "block"]}
             w="auto"
             userSelect={"none"}
             as={RLink}
@@ -32,22 +31,10 @@ function Header() {
           >
             <Center h="full">
               <Image h="39px" w="auto" src={full_logo} />
-              <Image display={["block", "none"]} w="47px" h="47px" src={logo} />
             </Center>
           </Link>
-          <Link
-            display={["block", "none"]}
-            w="45px"
-            userSelect={"none"}
-            href="/"
-            as={RLink}
-            to="/"
-          >
-            <Center w="45px" h="full">
-              <Image display={["block", "none"]} w="45px" h="45px" src={logo} />
-            </Center>
-          </Link>
-          <Center w="auto" h="full">
+
+          <Center w="auto" h="full" display={["none", "flex"]}>
             <Stack direction="row" spacing={2}>
               <RLink to="/capes">
                 <Button
