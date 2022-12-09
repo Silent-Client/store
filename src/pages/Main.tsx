@@ -81,7 +81,7 @@ function Main() {
               <StoreItem type="capes" data={cape} />
             ))}
           </SimpleGrid>
-          {capes && capes?.length > 3 && (
+          {capes && capes?.length > 2 && (
             <Center w="full" mt={5}>
               <RLink to="/capes">
                 <Button>Show more</Button>
@@ -104,7 +104,7 @@ function Main() {
               <StoreItem type="wings" data={wing} />
             ))}
           </SimpleGrid>
-          {wings && wings?.length > 1 && (
+          {wings && wings?.length > 2 && (
             <Center w="full" mt={5}>
               <RLink to="/wings">
                 <Button>Show more</Button>
