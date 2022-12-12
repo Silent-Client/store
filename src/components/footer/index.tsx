@@ -1,0 +1,115 @@
+import { Center, Link, Stack, Text } from "@chakra-ui/react";
+import React from "react";
+import { FaDiscord, FaTelegram, FaVk } from "react-icons/fa";
+import { Link as RLink } from "react-router-dom";
+
+function Footer() {
+	return (
+		<Center w="full" padding="45px 0px" as="footer">
+			<Stack
+				w={["auto", "full"]}
+				paddingRight={[0, 10]}
+				paddingLeft={[0, 10]}
+				direction={["column", "row"]}
+				justifyContent="space-between"
+			>
+				<Center h="42px">
+					<Text fontWeight={600}>
+						© {new Date().getFullYear()} Silent Client
+					</Text>
+				</Center>
+
+				<Center h="42px">
+					<Stack direction="row" spacing={5}>
+						<Link
+							transition="opacity 0.2s ease-in-out"
+							href="https://t.me/silent_client"
+							color="#c9c9c9"
+							isExternal
+							_hover={{
+								opacity: "0.5",
+							}}
+						>
+							<FaTelegram size={25} />
+						</Link>
+						<Link
+							transition="opacity 0.2s ease-in-out"
+							href="https://vk.com/silentclient"
+							color="#c9c9c9"
+							isExternal
+							_hover={{
+								opacity: "0.5",
+							}}
+						>
+							<FaVk size={25} />
+						</Link>
+
+						<Link
+							transition="opacity 0.2s ease-in-out"
+							href="https://t.me/silent_client"
+							color="#c9c9c9"
+							isExternal
+							_hover={{
+								opacity: "0.5",
+							}}
+						>
+							<FaDiscord size={25} />
+						</Link>
+					</Stack>
+				</Center>
+				<Center h="42px">
+					<Stack direction="row" spacing={5}>
+						<Link
+							color="rgb(114, 114, 114)"
+							fontWeight={600}
+							_hover={{
+								color: "white",
+								textDecoration: "none",
+							}}
+							href="https://silentclient.ml/download"
+						>
+							Download
+						</Link>
+						<Link
+							color="rgb(114, 114, 114)"
+							fontWeight={600}
+							_hover={{
+								color: "white",
+								textDecoration: "none",
+							}}
+							href="https://silentclient.ml/faq"
+						>
+							FAQ
+						</Link>
+						<Link
+							color="rgb(114, 114, 114)"
+							fontWeight={600}
+							_hover={{
+								color: "white",
+								textDecoration: "none",
+							}}
+							as={RLink}
+							to="/capes"
+						>
+							Capes
+						</Link>
+						<Link
+							color="rgb(114, 114, 114)"
+							fontWeight={600}
+							_hover={{
+								color: "white",
+								textDecoration: "none",
+							}}
+							as={RLink}
+							to="/wings"
+						>
+							Wings
+						</Link>
+					</Stack>
+				</Center>
+			</Stack>
+		</Center>
+	);
+}
+
+export default Footer;

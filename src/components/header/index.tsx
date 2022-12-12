@@ -1,166 +1,127 @@
 import React from "react";
 import {
-  Container,
-  Box,
-  Stack,
-  Link,
-  Image,
-  Center,
-  Button,
-  Menu,
-  MenuButton,
-  MenuList,
-  MenuItem,
+	Container,
+	Box,
+	Stack,
+	Link,
+	Image,
+	Center,
+	Button,
+	Menu,
+	MenuButton,
+	MenuList,
+	MenuItem,
 } from "@chakra-ui/react";
-import { Link as RLink } from "react-router-dom";
+import { Link as RLink, useLocation } from "react-router-dom";
 
 import full_logo from "../../assets/images/full_logo.svg";
 import { getUser, logout } from "../../hooks/auth";
 
 function Header() {
-  return (
-    <Box bgColor="#141414" position="relative" w="full" zIndex={2} as="header">
-      <Container minW="full" ml="auto" mr="auto" pl="20px" pr="20px">
-        <Stack direction="row" h="77px" justifyContent="space-between">
-          <Link
-            display={["block", "block"]}
-            w="auto"
-            userSelect={"none"}
-            as={RLink}
-            to="/"
-          >
-            <Center h="full">
-              <Image h="39px" w="auto" src={full_logo} />
-            </Center>
-          </Link>
+	const location = useLocation();
+	return (
+		<Box bgColor="black" position="relative" w="full" zIndex={2} as="header">
+			<Container minW="full" ml="auto" mr="auto" pl="20px" pr="20px">
+				<Stack direction="row" h="77px" justifyContent="space-between">
+					<Link
+						display={["block", "block"]}
+						w="auto"
+						userSelect={"none"}
+						as={RLink}
+						to="/"
+					>
+						<Center h="full">
+							<Image h="39px" w="auto" src={full_logo} />
+						</Center>
+					</Link>
 
-          <Center w="auto" h="full" display={["none", "flex"]}>
-            <Stack direction="row" spacing={2}>
-              <RLink to="/capes">
-                <Button
-                  leftIcon={
-                    <svg
-                      style={{
-                        width: "20px",
-                        height: "20px",
-                      }}
-                      viewBox="0 0 28.966 33"
-                      role="img"
-                    >
-                      <path
-                        xmlns="http://www.w3.org/2000/svg"
-                        d="M25.323,5.354c-2.757.866-4.856,2.012-8.049,6.41S9.938,31.13,10.212,33.092c3.9,0,6.692.921,7.792,1.789s3.414,3.3,5.068,3.446c3.886.338,5.535-2.977,8.192-2.977s7.386,2.436,7.9,2.6c-3.209-8.025-6.461-17.938-6.754-23.787S34.428,6.747,33.687,6.1c-2.03-1.163-6.058,2.478-7.383,2.21S25.876,5.25,25.323,5.354ZM19.494,20.746c-.154,1.064-.575,3.178-.98,4.951a48.343,48.343,0,0,1-1.859,5.83c1.09-.73,1.951-3.689,2.348-5.312A20.725,20.725,0,0,0,19.494,20.746Zm8.1-2.9a8.579,8.579,0,0,0-1.117,4.389c-.035.708-.041,2.678-.172,4.562-.058.839-.321,2.667-.642,4.384-.4,2.137-.816,3.646-.941,4.478a50.1,50.1,0,0,0,2.04-7.08c.32-1.937.217-5.794.29-7.063A10.944,10.944,0,0,1,27.6,17.844Zm.654,4.275a18.173,18.173,0,0,1,.064,3.822c-.079,1.22-.2,2.448-.27,3.276-.074.938-.073,1.558-.2,1.571A20.4,20.4,0,0,1,27.757,27C27.84,25.783,28.144,22.922,28.251,22.119Z"
-                        transform="translate(-10.199 -5.351)"
-                        fill="#fff"
-                        fill-rule="evenodd"
-                      ></path>
-                    </svg>
-                  }
-                >
-                  Capes
-                </Button>
-              </RLink>
-              <RLink to="/wings">
-                <Button
-                  leftIcon={
-                    <svg
-                      style={{
-                        width: "20px",
-                        height: "20px",
-                      }}
-                      viewBox="0 0 48.465 25.495"
-                      role="img"
-                    >
-                      <g
-                        xmlns="http://www.w3.org/2000/svg"
-                        transform="translate(0 0)"
-                      >
-                        <g transform="translate(22.973 7.29)">
-                          <path
-                            d="M47.661,39.868Z"
-                            transform="translate(-47.661 -39.868)"
-                            fill="#fff"
-                          ></path>
-                        </g>
-                        <g transform="translate(0 0.002)">
-                          <path
-                            d="M27.972,33.621c0-.023-.006-.047-.009-.07q-.028-.242-.06-.481c-.005-.041-.011-.082-.017-.123-.009-.067-.019-.132-.029-.2-.007-.048-.014-.1-.022-.144s-.02-.124-.03-.186-.017-.1-.025-.155-.021-.121-.032-.181-.018-.1-.027-.154l-.034-.181-.029-.151c-.012-.059-.024-.118-.036-.178s-.021-.1-.032-.151-.025-.115-.038-.172-.023-.1-.034-.152-.026-.111-.039-.166-.024-.1-.037-.15-.027-.109-.041-.163-.026-.1-.039-.149-.028-.106-.043-.158-.028-.1-.042-.147-.029-.1-.044-.152-.03-.1-.045-.146-.03-.1-.045-.144l-.048-.148-.045-.135c-.017-.05-.035-.1-.052-.147s-.03-.086-.046-.127-.041-.107-.061-.159c-.013-.034-.026-.07-.04-.1-.034-.085-.069-.168-.1-.25l-.039-.087c-.023-.052-.046-.1-.07-.155-.016-.033-.032-.066-.048-.1s-.043-.089-.065-.132-.034-.065-.051-.1-.043-.082-.065-.121-.036-.062-.054-.093l-.066-.112c-.018-.03-.037-.059-.056-.088s-.045-.07-.068-.1l-.058-.082c-.023-.032-.046-.065-.07-.1l-.059-.076-.072-.087c-.02-.024-.04-.047-.061-.069s-.049-.053-.074-.079-.041-.042-.062-.062-.051-.047-.076-.069l-.062-.054c-.026-.022-.053-.041-.079-.061s-.041-.031-.063-.046-.055-.036-.083-.052-.041-.025-.062-.037-.06-.03-.089-.044-.039-.019-.059-.027-.067-.024-.1-.035c-.017-.005-.033-.012-.05-.017a1.294,1.294,0,0,0-.155-.033c-3.437-.492-7.553,2.432-11.521,10.213-2.032,3.985-4.084,7.416-6.68,8.9,0,0-2.215.819-1.477,2.542s3.691,0,3.691,0-1.61,1.723-.5,3.2,3.2-.067,4.183-2.092a2,2,0,0,0,2.067,2.1c2.049.1,1.978-4.683,1.978-4.683s1.033,1.845,2.609,1.845c1.556,0,1.108-3.937,1.108-3.937s4.168,4.9,3.43-4.326a1.981,1.981,0,0,0,.265.744h0c.029.048.061.1.1.145l.018.026c.036.049.076.1.119.146l.025.027a1.933,1.933,0,0,0,.146.143l.025.021a2.045,2.045,0,0,0,.182.139l.011.007a2.164,2.164,0,0,0,.213.124l.022.012a2.354,2.354,0,0,0,.244.1l.043.016a2.668,2.668,0,0,0,.275.078l.052.011a3.154,3.154,0,0,0,.317.051l.045,0c.12.011.244.019.377.019,1.77,0,2.244-4.27,1.783-8.34Z"
-                            transform="translate(-4.998 -26.332)"
-                            fill="#fff"
-                          ></path>
-                        </g>
-                        <g transform="translate(25.492 7.29)">
-                          <path
-                            d="M52.339,39.868Z"
-                            transform="translate(-52.339 -39.868)"
-                            fill="#fff"
-                          ></path>
-                        </g>
-                        <g transform="translate(25.328 0)">
-                          <path
-                            d="M73.543,45.5c-2.6-1.485-4.648-4.916-6.68-8.9-3.968-7.78-8.084-10.7-11.521-10.213a1.177,1.177,0,0,0-.155.033l-.051.017c-.034.011-.068.022-.1.035s-.04.018-.059.027-.06.027-.089.043-.041.025-.062.037-.055.033-.083.052-.043.031-.064.046-.053.039-.079.06l-.064.054c-.025.023-.051.045-.075.069s-.042.041-.062.062-.049.051-.073.078l-.061.07-.071.086-.06.078c-.023.031-.046.062-.068.094s-.039.055-.059.084-.045.067-.067.1-.038.059-.057.09-.044.073-.065.11-.037.063-.055.1l-.063.117-.054.1c-.02.04-.041.082-.061.124s-.035.07-.052.107-.041.09-.061.136-.032.071-.048.107c-.034.079-.068.16-.1.243-.017.041-.032.084-.048.126s-.037.094-.054.142-.033.091-.049.137-.033.091-.049.137-.032.095-.047.143-.031.093-.046.14-.031.1-.047.151-.029.093-.043.139-.031.1-.046.157l-.04.143-.044.162c-.013.048-.025.1-.038.144s-.029.112-.043.168-.024.1-.035.144-.027.115-.04.172l-.033.147c-.013.058-.026.117-.038.176s-.021.1-.031.148-.025.119-.037.179l-.029.15c-.012.061-.023.122-.034.183s-.018.1-.026.149-.022.124-.032.186-.016.1-.024.151-.02.125-.03.189-.015.1-.022.149c-.01.065-.019.129-.029.194-.007.048-.013.1-.019.145q-.026.192-.049.386c-.006.048-.012.1-.017.144h0c-.461,4.07.013,8.339,1.782,8.339.134,0,.258-.008.377-.019l.045,0c.112-.012.217-.03.317-.051l.052-.011c.1-.022.188-.048.275-.078l.042-.015a2.364,2.364,0,0,0,.244-.1l.022-.012a2.174,2.174,0,0,0,.213-.124l.01-.006a2.056,2.056,0,0,0,.183-.139l.025-.021a1.932,1.932,0,0,0,.146-.143l.025-.027c.043-.048.083-.1.119-.146l.018-.026c.034-.048.067-.1.1-.145h0a1.982,1.982,0,0,0,.265-.744c-.738,9.228,3.43,4.326,3.43,4.326s-.448,3.937,1.107,3.937c1.575,0,2.609-1.845,2.609-1.845s-.07,4.784,1.978,4.683a2,2,0,0,0,2.067-2.1c.984,2.025,3.076,3.568,4.184,2.092s-.5-3.2-.5-3.2,2.953,1.723,3.691,0S73.543,45.5,73.543,45.5Z"
-                            transform="translate(-52.033 -26.329)"
-                            fill="#fff"
-                          ></path>
-                        </g>
-                      </g>
-                    </svg>
-                  }
-                >
-                  Wings
-                </Button>
-              </RLink>
-            </Stack>
-          </Center>
-          <Center w="auto" h="full">
-            {(getUser() && (
-              <Menu>
-                <MenuButton as={Link} w="45px">
-                  <Image
-                    src={`https://mc-heads.net/avatar/${getUser()?.username}`}
-                    w="45px"
-                    h="45px"
-                    borderRadius={"md"}
-                  />
-                </MenuButton>
-                <MenuList bgColor="#2b2b2b">
-                  <MenuItem
-                    bgColor="transparent"
-                    _hover={{
-                      bgColor: "#222222",
-                    }}
-                    as={RLink}
-                    to="/account"
-                  >
-                    Account
-                  </MenuItem>
-                  <MenuItem
-                    bgColor="transparent"
-                    _hover={{
-                      bgColor: "#222222",
-                    }}
-                    onClick={logout}
-                  >
-                    Logout
-                  </MenuItem>
-                </MenuList>
-              </Menu>
-            )) || (
-              <RLink to="/login">
-                <Button
-                  variant="outline"
-                  minWidth={["60px", "70px"]}
-                  borderColor="white"
-                >
-                  Login
-                </Button>
-              </RLink>
-            )}
-          </Center>
-        </Stack>
-      </Container>
-    </Box>
-  );
+					<Center w="auto" h="full" display={["none", "flex"]}>
+						<Stack direction="row" spacing={5}>
+							<RLink to="/capes">
+								<Link
+									color={
+										location.pathname === "/capes"
+											? "white"
+											: "rgb(114, 114, 114)"
+									}
+									fontSize="18px"
+									fontWeight={600}
+									_hover={{
+										color: "white",
+										textDecoration: "none",
+									}}
+								>
+									Capes
+								</Link>
+							</RLink>
+							<RLink to="/wings">
+								<Link
+									color={
+										location.pathname === "/wings"
+											? "white"
+											: "rgb(114, 114, 114)"
+									}
+									fontSize="18px"
+									fontWeight={600}
+									_hover={{
+										color: "white",
+										textDecoration: "none",
+									}}
+								>
+									Wings
+								</Link>
+							</RLink>
+						</Stack>
+					</Center>
+					<Center w="auto" h="full">
+						{(getUser() && (
+							<Menu>
+								<MenuButton as={Link} w="45px">
+									<Image
+										src={`https://mc-heads.net/avatar/${getUser()?.username}`}
+										w="45px"
+										h="45px"
+										borderRadius={"md"}
+									/>
+								</MenuButton>
+								<MenuList bgColor="black">
+									<MenuItem
+										bgColor="transparent"
+										_hover={{
+											bgColor: "#131313",
+										}}
+										as={RLink}
+										to="/account"
+									>
+										My cosmetics
+									</MenuItem>
+									<MenuItem
+										bgColor="transparent"
+										_hover={{
+											bgColor: "#131313",
+										}}
+										onClick={logout}
+									>
+										Logout
+									</MenuItem>
+								</MenuList>
+							</Menu>
+						)) || (
+							<RLink to="/login">
+								<Button
+									variant="outline"
+									minWidth={["60px", "70px"]}
+									borderColor="white"
+								>
+									Login
+								</Button>
+							</RLink>
+						)}
+					</Center>
+				</Stack>
+			</Container>
+		</Box>
+	);
 }
 
 export default Header;

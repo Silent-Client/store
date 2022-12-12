@@ -11,43 +11,40 @@ import Success from "./pages/Success";
 import Account from "./pages/Account";
 import Capes from "./pages/Capes";
 import Wings from "./pages/Wings";
+import Footer from "./components/footer";
 
 function App() {
-  React.useEffect(() => {
-    const getData = async () => {
-      await getAuth();
-    };
+	React.useEffect(() => {
+		const getData = async () => {
+			await getAuth();
+		};
 
-    getData();
-  }, []);
+		getData();
+	}, []);
 
-  return (
-    <Box id="silent_app">
-      <Header />
-      <Container
-        minW="full"
-        id="silent_content"
-        paddingTop={[5, 10]}
-        paddingBottom={[5, 10]}
-      >
-        <Routes>
-          <Route path="/" element={<Main />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/success" element={<Success />} />
-          <Route path="/capes" element={<Capes />} />
-          <Route path="/wings" element={<Wings />} />
+	return (
+		<Box id="silent_app">
+			<Header />
+			<Container minW="full" id="silent_content" paddingTop={[5, 10]}>
+				<Routes>
+					<Route path="/" element={<Main />} />
+					<Route path="/login" element={<Login />} />
+					<Route path="/register" element={<Register />} />
+					<Route path="/success" element={<Success />} />
+					<Route path="/capes" element={<Capes />} />
+					<Route path="/wings" element={<Wings />} />
 
-          <Route
-            path="/account"
-            element={getUser() ? <Account /> : <Login />}
-          />
+					<Route
+						path="/account"
+						element={getUser() ? <Account /> : <Login />}
+					/>
 
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </Container>
-    </Box>
-  );
+					<Route path="*" element={<NotFound />} />
+				</Routes>
+				<Footer />
+			</Container>
+		</Box>
+	);
 }
 
 export default App;
