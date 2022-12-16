@@ -82,7 +82,7 @@ function Footer() {
 								color: "white",
 								textDecoration: "none",
 							}}
-							href="https://silentclient.ml/download"
+							href="https://silentclient.net/download"
 						>
 							Download
 						</Link>
@@ -93,7 +93,7 @@ function Footer() {
 								color: "white",
 								textDecoration: "none",
 							}}
-							href="https://silentclient.ml/faq"
+							href="https://silentclient.net/faq"
 						>
 							FAQ
 						</Link>
