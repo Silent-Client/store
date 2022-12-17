@@ -12,7 +12,6 @@ import {
   SimpleGrid,
   Button,
   Stack,
-  Image,
   Text,
 } from "@chakra-ui/react";
 import axios from "axios";
@@ -20,6 +19,7 @@ import React from "react";
 import { Title } from "react-head-meta";
 import { StoreItemType } from "../components/StoreItem";
 import { getUser } from "../hooks/auth";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 function Account() {
   const [capes, setCapes] = React.useState<StoreItemType[] | null>(null);
@@ -105,11 +105,11 @@ function Account() {
                         h="250px"
                         padding="10px"
                       >
-                        <Image
-                          w="230px"
-                          h="230px"
+                        <LazyLoadImage
+                          width="230px"
+                          height="230px"
                           draggable="false"
-                          loading="lazy"
+                          alt={cape.name}
                           src={`https://api.silentclient.net${cape.preview}`}
                         />
                       </Center>
@@ -191,11 +191,11 @@ function Account() {
                         h="250px"
                         padding="10px"
                       >
-                        <Image
-                          w="230px"
-                          h="230px"
+                        <LazyLoadImage
+                          width="230px"
+                          height="230px"
                           draggable="false"
-                          loading="lazy"
+                          alt={wing.name}
                           src={`https://api.silentclient.net${wing.preview}`}
                         />
                       </Center>

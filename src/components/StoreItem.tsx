@@ -1,8 +1,9 @@
-import { Center, Image, Stack, Text, Button, useToast } from "@chakra-ui/react";
+import { Center, Stack, Text, Button, useToast } from "@chakra-ui/react";
 import axios from "axios";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { getUser } from "../hooks/auth";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 export type StoreItemType = {
   id: number;
@@ -91,11 +92,11 @@ function StoreItem({
       bgColor="#131313"
     >
       <Center w="full" h="250px" userSelect="none" padding="10px">
-        <Image
-          w="230px"
-          h="230px"
+        <LazyLoadImage
+          width="230px"
+          height="230px"
           draggable="false"
-          loading="lazy"
+          alt={data.name}
           src={`https://api.silentclient.net${data.preview}`}
         />
       </Center>
