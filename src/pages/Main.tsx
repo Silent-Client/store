@@ -23,7 +23,7 @@ function Main() {
     const getData = async () => {
       try {
         const { data: capes } = await axios.get(
-          "https://api.silentclient.ml/store/capes"
+          "https://api.silentclient.net/store/capes"
         );
 
         const capesArr = capes.capes;
@@ -35,7 +35,7 @@ function Main() {
         setCapes(capesArr);
 
         const { data: wings } = await axios.get(
-          "https://api.silentclient.ml/store/wings"
+          "https://api.silentclient.net/store/wings"
         );
 
         const wingsArr = wings.wings;
@@ -66,7 +66,7 @@ function Main() {
 
   return (
     <Box>
-      <Title title="Home | Silent Client Store" />
+      <Title title="Silent Client Store" />
       <Center>
         <Heading>Capes</Heading>
       </Center>

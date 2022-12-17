@@ -30,7 +30,7 @@ function Success() {
         }
 
         const { data: res } = await axios.post(
-          "https://api.silentclient.ml/store/check_pay",
+          "https://api.silentclient.net/store/check_pay",
           {
             id: searchParams.get("id"),
           },

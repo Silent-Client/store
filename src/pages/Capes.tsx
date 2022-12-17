@@ -20,7 +20,7 @@ function Capes() {
     const getData = async () => {
       try {
         const { data: capes } = await axios.get(
-          "https://api.silentclient.ml/store/capes"
+          "https://api.silentclient.net/store/capes"
         );
 
         setCapes(capes.capes);

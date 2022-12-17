@@ -20,7 +20,7 @@ function Wings() {
     const getData = async () => {
       try {
         const { data: wings } = await axios.get(
-          "https://api.silentclient.ml/store/wings"
+          "https://api.silentclient.net/store/wings"
         );
 
         setWings(wings.wings);

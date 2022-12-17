@@ -47,7 +47,7 @@ async function getAuth() {
 
   try {
     const { data: res } = await axios.get(
-      `https://api.silentclient.ml/account`,
+      `https://api.silentclient.net/account`,
       {
         headers: {
           authorization: `Bearer ${user.accessToken}`,
@@ -70,7 +70,7 @@ async function getAuth() {
 async function login(username: string, password: string) {
   try {
     const { data: res } = await axios.post(
-      "https://api.silentclient.ml/auth/login",
+      "https://api.silentclient.net/auth/login",
       {
         username: username,
         password: password,
@@ -80,7 +80,7 @@ async function login(username: string, password: string) {
     if (!res.auth.token) return { errors: ["bad login or pass"] };
 
     const { data: user } = await axios.get(
-      `https://api.silentclient.ml/account`,
+      `https://api.silentclient.net/account`,
       {
         headers: {
           authorization: `Bearer ${res.auth.token}`,
@@ -108,7 +108,7 @@ async function login(username: string, password: string) {
 async function register(username: string, password: string) {
   try {
     const { data: res } = await axios.post(
-      "https://api.silentclient.ml/auth/register",
+      "https://api.silentclient.net/auth/register",
       {
         username: username,
         password: password,
@@ -118,7 +118,7 @@ async function register(username: string, password: string) {
     if (res.errors) return { errors: res.errors };
 
     const { data: user } = await axios.get(
-      `https://api.silentclient.ml/account`,
+      `https://api.silentclient.net/account`,
       {
         headers: {
           authorization: `Bearer ${res.auth.token}`,
@@ -152,7 +152,7 @@ async function updateAuth() {
 
   try {
     const { data: res } = await axios.get(
-      `https://api.silentclient.ml/account`,
+      `https://api.silentclient.net/account`,
       {
         headers: {
           authorization: `Bearer ${user.accessToken}`,

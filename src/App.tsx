@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Container } from "@chakra-ui/react";
+import { Box, Container, Stack } from "@chakra-ui/react";
 import Header from "./components/header";
 import { Routes, Route } from "react-router-dom";
 import NotFound from "./pages/NotFound";
@@ -14,37 +14,40 @@ import Wings from "./pages/Wings";
 import Footer from "./components/footer";
 
 function App() {
-	React.useEffect(() => {
-		const getData = async () => {
-			await getAuth();
-		};
+  React.useEffect(() => {
+    const getData = async () => {
+      await getAuth();
+    };
 
-		getData();
-	}, []);
+    getData();
+  }, []);
 
-	return (
-		<Box id="silent_app">
-			<Header />
-			<Container minW="full" id="silent_content" paddingTop={[5, 10]}>
-				<Routes>
-					<Route path="/" element={<Main />} />
-					<Route path="/login" element={<Login />} />
-					<Route path="/register" element={<Register />} />
-					<Route path="/success" element={<Success />} />
-					<Route path="/capes" element={<Capes />} />
-					<Route path="/wings" element={<Wings />} />
+  return (
+    <Box id="silent_app">
+      <Stack w="full" h="full" minHeight="100vh" direction="column" spacing={0}>
+        <Header />
+        <Container maxW="full" id="silent_content" paddingTop={[5, 10]}>
+          <Routes>
+            <Route path="/" element={<Main />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/success" element={<Success />} />
+            <Route path="/capes" element={<Capes />} />
+            <Route path="/wings" element={<Wings />} />
 
-					<Route
-						path="/account"
-						element={getUser() ? <Account /> : <Login />}
-					/>
+            <Route
+              path="/account"
+              element={getUser() ? <Account /> : <Login />}
+            />
 
-					<Route path="*" element={<NotFound />} />
-				</Routes>
-				<Footer />
-			</Container>
-		</Box>
-	);
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </Container>
+        <Box flex="1" />
+        <Footer />
+      </Stack>
+    </Box>
+  );
 }
 
 export default App;
