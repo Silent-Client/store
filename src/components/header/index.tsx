@@ -23,7 +23,11 @@ function Header() {
     <Box bgColor="black" position="relative" w="full" zIndex={2} as="header">
       <Container minW="full" ml="auto" mr="auto" pl="20px" pr="20px">
         <Stack direction="row" h="77px" justifyContent="space-between">
-          <Center w="full" justifyContent={["center", "left"]} h="full">
+          <Center
+            w={["auto", "full"]}
+            justifyContent={["center", "left"]}
+            h="full"
+          >
             <Link
               display={["block", "block"]}
               w="auto"
@@ -73,7 +77,11 @@ function Header() {
               </RLink>
             </Stack>
           </Center>
-          <Center w="full" justifyContent={["center", "right"]} h="full">
+          <Center
+            w={["auto", "full"]}
+            justifyContent={["center", "right"]}
+            h="full"
+          >
             {(getUser() && (
               <Menu>
                 <MenuButton as={Link} w="45px">
