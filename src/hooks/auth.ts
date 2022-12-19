@@ -99,8 +99,8 @@ async function login(username: string, password: string) {
       id: user.account.id,
       accessToken: res.auth.token,
       username: user.account.username,
-      email: user.email,
-      original_username: user.original_username,
+      email: user.account.email,
+      original_username: user.account.original_username,
       is_admin: user.account.is_admin,
     };
 
