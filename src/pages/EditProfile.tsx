@@ -109,10 +109,9 @@ function EditProfile() {
             <Heading>Edit profile</Heading>
           </Center>
           <FormControl isInvalid={errors.username ? true : false}>
-            <FormLabel>Minecraft username</FormLabel>
+            <FormLabel>New minecraft username</FormLabel>
             <Input
               isDisabled={isLoading}
-              defaultValue={user?.original_username}
               type="text"
               {...register("username", { required: false })}
             />

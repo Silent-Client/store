@@ -139,9 +139,9 @@ async function register(username: string, email: string, password: string) {
     let userData: UserData = {
       id: user.account.id,
       accessToken: res.auth.token,
-      email: user.email,
+      email: user.account.email,
       username: user.account.username,
-      original_username: user.original_username,
+      original_username: user.account.original_username,
       is_admin: user.account.is_admin,
     };
 
