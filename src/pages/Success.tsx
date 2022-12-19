@@ -55,7 +55,7 @@ function Success() {
   }, []);
 
   return isLoading ? (
-    <Center w="full" h="90vh">
+    <Center w="full" h="70vh">
       <Spinner size="xl" />
     </Center>
   ) : notFound ? (

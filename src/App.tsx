@@ -12,6 +12,8 @@ import Account from "./pages/Account";
 import Capes from "./pages/Capes";
 import Wings from "./pages/Wings";
 import Footer from "./components/footer";
+import FreeUsername from "./pages/FreeUsername";
+import EditProfile from "./pages/EditProfile";
 
 function App() {
   React.useEffect(() => {
@@ -34,10 +36,16 @@ function App() {
             <Route path="/success" element={<Success />} />
             <Route path="/capes" element={<Capes />} />
             <Route path="/wings" element={<Wings />} />
+            <Route path="/free_username" element={<FreeUsername />} />
 
             <Route
               path="/account"
               element={getUser() ? <Account /> : <Login />}
+            />
+
+            <Route
+              path="/edit_profile"
+              element={getUser() ? <EditProfile /> : <Login />}
             />
 
             <Route path="*" element={<NotFound />} />

@@ -17,7 +17,7 @@ import { login } from "../hooks/auth";
 import { Link as RLink } from "react-router-dom";
 
 export type LoginType = {
-  username: string;
+  email: string;
   password: string;
 };
 
@@ -33,7 +33,7 @@ function Login() {
   const onSubmit = handleSubmit(async (data) => {
     setIsLoading(true);
     try {
-      const res = await login(data.username, data.password);
+      const res = await login(data.email, data.password);
 
       if (res.errors) {
         for (const err of res.errors) {
@@ -71,14 +71,14 @@ function Login() {
           <Center>
             <Heading>Login to Silent Client</Heading>
           </Center>
-          <FormControl isInvalid={errors.username ? true : false}>
-            <FormLabel>Username</FormLabel>
+          <FormControl isInvalid={errors.email ? true : false}>
+            <FormLabel>Email</FormLabel>
             <Input
               isDisabled={isLoading}
-              type="text"
-              {...register("username", { required: true })}
+              type="email"
+              {...register("email", { required: true })}
             />
-            {errors.username && (
+            {errors.email && (
               <FormErrorMessage>This field is required</FormErrorMessage>
             )}
           </FormControl>
@@ -98,7 +98,7 @@ function Login() {
           </Button>
 
           <Link as={RLink} to="/register">
-            Register
+            Register for Silent Client Store
           </Link>
         </Stack>
       </form>

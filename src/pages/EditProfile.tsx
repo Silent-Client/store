@@ -1,3 +1,8 @@
+import React from "react";
+import { getUser } from "../hooks/auth";
+import { Title } from "react-head-meta";
+import { useForm } from "react-hook-form";
+import parse from "html-react-parser";
 import {
   Center,
   Stack,
@@ -9,19 +14,16 @@ import {
   Button,
   useToast,
 } from "@chakra-ui/react";
-import React from "react";
-import { Title } from "react-head-meta";
-import { useForm } from "react-hook-form";
-import { register as RegisterHook } from "../hooks/auth";
-import parse from "html-react-parser";
+import axios from "axios";
 
-export type RegisterType = {
-  username: string;
-  email: string;
-  password: string;
+export type EditProfileType = {
+  username?: string;
+  email?: string;
+  password?: string;
 };
 
-function Register() {
+function EditProfile() {
+  const user = getUser();
   const toast = useToast();
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
 
@@ -29,11 +31,19 @@ function Register() {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<RegisterType>();
+  } = useForm<EditProfileType>();
   const onSubmit = handleSubmit(async (data) => {
     setIsLoading(true);
     try {
-      const res = await RegisterHook(data.username, data.email, data.password);
+      const { data: res } = await axios.post(
+        "https://api.silentclient.net/account/edit_profile",
+        data,
+        {
+          headers: {
+            authorization: `Bearer ${user?.accessToken}`,
+          },
+        }
+      );
 
       if (res.errors) {
         for (const err of res.errors) {
@@ -60,64 +70,80 @@ function Register() {
         return;
       }
 
-      window.location.href = "/";
-    } catch (error: any) {
-      toast({
-        title: "Error!",
-        description: error?.message || `${error}`,
-        status: "error",
-        duration: 3000,
-        isClosable: true,
-      });
+      window.location.reload();
+    } catch (err: any) {
+      if (err?.response && err.response?.data && err.response.data?.errors) {
+        for (const error of err.response.data.errors) {
+          if (error.message === "Username already taken") {
+            toast({
+              title: "Username already taken",
+              description: parse(
+                "<a href='/#/free_username' style='text-decoration: underline;'>Free username</a>"
+              ),
+              status: "error",
+              duration: 3000,
+              isClosable: true,
+            });
+          } else {
+            toast({
+              title: "Error!",
+              description: error.message,
+              status: "error",
+              duration: 3000,
+              isClosable: true,
+            });
+          }
+        }
+      }
     } finally {
       setIsLoading(false);
     }
   });
-
   return (
     <Center w="full" h="full">
-      <Title title="Register | Silent Client" />
+      <Title title="Edit profile | Silent Client" />
 
       <form onSubmit={onSubmit}>
         <Stack direction="column" spacing="10px">
           <Center>
-            <Heading>Register to Silent Client</Heading>
+            <Heading>Edit profile</Heading>
           </Center>
           <FormControl isInvalid={errors.username ? true : false}>
             <FormLabel>Minecraft username</FormLabel>
             <Input
               isDisabled={isLoading}
+              defaultValue={user?.original_username}
               type="text"
-              {...register("username", { required: true })}
+              {...register("username", { required: false })}
             />
             {errors.username && (
               <FormErrorMessage>This field is required</FormErrorMessage>
             )}
           </FormControl>
           <FormControl isInvalid={errors.email ? true : false}>
-            <FormLabel>Email</FormLabel>
+            <FormLabel>New email</FormLabel>
             <Input
               isDisabled={isLoading}
-              type="text"
-              {...register("email", { required: true })}
+              type="email"
+              {...register("email", { required: false })}
             />
             {errors.email && (
               <FormErrorMessage>This field is required</FormErrorMessage>
             )}
           </FormControl>
           <FormControl isInvalid={errors.password ? true : false}>
-            <FormLabel>Password</FormLabel>
+            <FormLabel>New password</FormLabel>
             <Input
               isDisabled={isLoading}
               type="password"
-              {...register("password", { required: true })}
+              {...register("password", { required: false })}
             />
             {errors.password && (
               <FormErrorMessage>This field is required</FormErrorMessage>
             )}
           </FormControl>
           <Button w="full" type="submit" isDisabled={isLoading}>
-            Register
+            Update profile
           </Button>
         </Stack>
       </form>
@@ -125,4 +151,4 @@ function Register() {
   );
 }
 
-export default Register;
+export default EditProfile;

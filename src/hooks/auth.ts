@@ -4,6 +4,8 @@ interface UserData {
   id: number;
   accessToken: string;
   username: string;
+  email: string;
+  original_username: string;
   is_admin: number;
 }
 
@@ -15,7 +17,10 @@ function setAuth(user: UserData) {
     JSON.stringify({
       id: user.id,
       accessToken: user.accessToken,
+      email: user.email,
       username: user.username,
+      original_username: user.original_username,
+      is_admin: user.is_admin,
     })
   );
 }
@@ -72,7 +77,7 @@ async function login(username: string, password: string) {
     const { data: res } = await axios.post(
       "https://api.silentclient.net/auth/login",
       {
-        username: username,
+        email: username,
         password: password,
       }
     );
@@ -94,6 +99,8 @@ async function login(username: string, password: string) {
       id: user.account.id,
       accessToken: res.auth.token,
       username: user.account.username,
+      email: user.email,
+      original_username: user.original_username,
       is_admin: user.account.is_admin,
     };
 
@@ -105,12 +112,13 @@ async function login(username: string, password: string) {
   }
 }
 
-async function register(username: string, password: string) {
+async function register(username: string, email: string, password: string) {
   try {
     const { data: res } = await axios.post(
       "https://api.silentclient.net/auth/register",
       {
         username: username,
+        email: email,
         password: password,
       }
     );
@@ -131,7 +139,9 @@ async function register(username: string, password: string) {
     let userData: UserData = {
       id: user.account.id,
       accessToken: res.auth.token,
+      email: user.email,
       username: user.account.username,
+      original_username: user.original_username,
       is_admin: user.account.is_admin,
     };
 
@@ -169,6 +179,8 @@ async function updateAuth() {
       id: res.account.id,
       accessToken: user.accessToken,
       username: res.account.username,
+      email: res.account.email,
+      original_username: res.account.original_username,
       is_admin: res.account.is_admin,
     };
 

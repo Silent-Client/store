@@ -86,7 +86,9 @@ function Header() {
               <Menu>
                 <MenuButton as={Link} w="45px">
                   <Image
-                    src={`https://mc-heads.net/avatar/${getUser()?.username}`}
+                    src={`https://mc-heads.net/avatar/${
+                      getUser()?.original_username
+                    }`}
                     w="45px"
                     h="45px"
                     borderRadius={"md"}
@@ -102,6 +104,16 @@ function Header() {
                     to="/account"
                   >
                     My cosmetics
+                  </MenuItem>
+                  <MenuItem
+                    bgColor="transparent"
+                    _hover={{
+                      bgColor: "#131313",
+                    }}
+                    as={RLink}
+                    to="/edit_profile"
+                  >
+                    Edit profile
                   </MenuItem>
                   <MenuItem
                     bgColor="transparent"
