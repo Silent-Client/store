@@ -14,48 +14,50 @@ import Wings from "./pages/Wings";
 import Footer from "./components/footer";
 import FreeUsername from "./pages/FreeUsername";
 import EditProfile from "./pages/EditProfile";
+import Icons from "./pages/Icons";
 
 function App() {
-  React.useEffect(() => {
-    const getData = async () => {
-      await getAuth();
-    };
+	React.useEffect(() => {
+		const getData = async () => {
+			await getAuth();
+		};
 
-    getData();
-  }, []);
+		getData();
+	}, []);
 
-  return (
-    <Box id="silent_app">
-      <Stack w="full" h="full" minHeight="100vh" direction="column" spacing={0}>
-        <Header />
-        <Container maxW="full" id="silent_content" paddingTop={[5, 10]}>
-          <Routes>
-            <Route path="/" element={<Main />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/success" element={<Success />} />
-            <Route path="/capes" element={<Capes />} />
-            <Route path="/wings" element={<Wings />} />
-            <Route path="/free_username" element={<FreeUsername />} />
+	return (
+		<Box id="silent_app">
+			<Stack w="full" h="full" minHeight="100vh" direction="column" spacing={0}>
+				<Header />
+				<Container maxW="full" id="silent_content" paddingTop={[5, 10]}>
+					<Routes>
+						<Route path="/" element={<Main />} />
+						<Route path="/login" element={<Login />} />
+						<Route path="/register" element={<Register />} />
+						<Route path="/success" element={<Success />} />
+						<Route path="/capes" element={<Capes />} />
+						<Route path="/wings" element={<Wings />} />
+						<Route path="/icons" element={<Icons />} />
+						<Route path="/free_username" element={<FreeUsername />} />
 
-            <Route
-              path="/account"
-              element={getUser() ? <Account /> : <Login />}
-            />
+						<Route
+							path="/account"
+							element={getUser() ? <Account /> : <Login />}
+						/>
 
-            <Route
-              path="/edit_profile"
-              element={getUser() ? <EditProfile /> : <Login />}
-            />
+						<Route
+							path="/edit_profile"
+							element={getUser() ? <EditProfile /> : <Login />}
+						/>
 
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </Container>
-        <Box flex="1" />
-        <Footer />
-      </Stack>
-    </Box>
-  );
+						<Route path="*" element={<NotFound />} />
+					</Routes>
+				</Container>
+				<Box flex="1" />
+				<Footer />
+			</Stack>
+		</Box>
+	);
 }
 
 export default App;
