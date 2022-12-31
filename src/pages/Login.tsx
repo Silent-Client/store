@@ -98,7 +98,7 @@ function Login() {
           </Button>
 
           <Link as={RLink} to="/register">
-            Register for Silent Client Store
+            Register to Silent Client Store
           </Link>
         </Stack>
       </form>
