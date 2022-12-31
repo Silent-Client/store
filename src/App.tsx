@@ -40,10 +40,7 @@ function App() {
 						<Route path="/wings" element={<Wings />} />
 						<Route path="/icons" element={<Icons />} />
 						<Route path="/free_username" element={<FreeUsername />} />
-						<Route
-							path="/account/:username"
-							element={getUser() ? <Account /> : <Login />}
-						/>
+						<Route path="/account/:username" element={<Account />} />
 
 						<Route
 							path="/account"
