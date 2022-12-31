@@ -120,7 +120,7 @@ function Header() {
 										as={RLink}
 										to="/account"
 									>
-										My cosmetics
+										Account
 									</MenuItem>
 									<MenuItem
 										bgColor="transparent"
@@ -128,9 +128,9 @@ function Header() {
 											bgColor: "#131313",
 										}}
 										as={RLink}
-										to="/edit_profile"
+										to="/edit_account"
 									>
-										Edit profile
+										Edit account
 									</MenuItem>
 									<MenuItem
 										bgColor="transparent"

@@ -48,7 +48,7 @@ function App() {
 						/>
 
 						<Route
-							path="/edit_profile"
+							path="/edit_account"
 							element={getUser() ? <EditProfile /> : <Login />}
 						/>
 
