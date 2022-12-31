@@ -22,10 +22,16 @@ function StoreItem({
 	data,
 	type,
 	pageType = "store",
+	username,
+	selectedItem,
+	setSelectedItem,
 }: {
 	data: StoreItemType;
 	type: "capes" | "wings" | "icons";
 	pageType?: "account" | "store";
+	username?: string;
+	selectedItem?: number;
+	setSelectedItem?: any;
 }) {
 	const navigate = useNavigate();
 
@@ -124,7 +130,7 @@ function StoreItem({
 									fontSize="27.5px"
 									color="white"
 								>
-									{getUser()?.original_username || "Steve"}
+									{username || getUser()?.original_username || "Steve"}
 								</Text>
 							</Center>
 						</Box>
@@ -143,9 +149,53 @@ function StoreItem({
 					</Text>
 					{pageType === "store" && <Text fontSize={16}>{data.price}₽</Text>}
 				</Stack>
-				{pageType === "store" && (
+				{(pageType === "store" && (
 					<Button w={["full", "auto"]} isDisabled={isLoading} onClick={buyItem}>
 						Buy
+					</Button>
+				)) || (
+					<Button
+						w={["full", "auto"]}
+						onClick={async () => {
+							setSelectedItem(selectedItem === data.id ? 0 : data.id);
+
+							try {
+								await axios.post(
+									"https://api.silentclient.net/account/select_" +
+										(type === "capes"
+											? "cape"
+											: type === "wings"
+											? "wings"
+											: "icon"),
+									{
+										id: selectedItem === data.id ? null : data.id,
+									},
+									{
+										headers: {
+											Authorization: `Bearer ${getUser()?.accessToken}`,
+										},
+									}
+								);
+							} catch (err: any) {
+								if (
+									err?.response &&
+									err.response?.data &&
+									err.response.data?.errors
+								) {
+									for (const error of err.response.data.errors) {
+										toast({
+											title: "Error!",
+											description: error.message,
+											status: "error",
+											duration: 3000,
+											isClosable: true,
+										});
+									}
+								}
+							}
+						}}
+					>
+						{selectedItem === data.id ? "Unselect" : "Select"}
 					</Button>
 				)}
 			</Stack>

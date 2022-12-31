@@ -8,13 +8,14 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Main from "./pages/Main";
 import Success from "./pages/Success";
-import Account from "./pages/Account";
+import MyCosmetics from "./pages/MyCosmetics";
 import Capes from "./pages/Capes";
 import Wings from "./pages/Wings";
 import Footer from "./components/footer";
 import FreeUsername from "./pages/FreeUsername";
 import EditProfile from "./pages/EditProfile";
 import Icons from "./pages/Icons";
+import Account from "./pages/Account";
 
 function App() {
 	React.useEffect(() => {
@@ -39,10 +40,14 @@ function App() {
 						<Route path="/wings" element={<Wings />} />
 						<Route path="/icons" element={<Icons />} />
 						<Route path="/free_username" element={<FreeUsername />} />
+						<Route
+							path="/account/:username"
+							element={getUser() ? <Account /> : <Login />}
+						/>
 
 						<Route
 							path="/account"
-							element={getUser() ? <Account /> : <Login />}
+							element={getUser() ? <MyCosmetics /> : <Login />}
 						/>
 
 						<Route
