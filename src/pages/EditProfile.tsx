@@ -51,7 +51,7 @@ function EditProfile() {
 						toast({
 							title: "Username already taken",
 							description: parse(
-								"<a href='/#/free_username' style='text-decoration: underline;'>Free username</a>"
+								"<a href='/free_username' style='text-decoration: underline;'>Free username</a>"
 							),
 							status: "error",
 							duration: 3000,
@@ -78,7 +78,7 @@ function EditProfile() {
 						toast({
 							title: "Username already taken",
 							description: parse(
-								"<a href='/#/free_username' style='text-decoration: underline;'>Free username</a>"
+								"<a href='/free_username' style='text-decoration: underline;'>Free username</a>"
 							),
 							status: "error",
 							duration: 3000,
