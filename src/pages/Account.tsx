@@ -30,7 +30,6 @@ function Account() {
 	const { username } = useParams();
 
 	const [isLoading, setIsLoading] = React.useState<boolean>(true);
-	const [isOnline, setIsOnline] = React.useState<boolean>(false);
 	const [notFound, setNotFound] = React.useState<boolean>(false);
 	const [account, setAccount] = React.useState<UserData | null>(null);
 
@@ -53,8 +52,6 @@ function Account() {
 				);
 
 				setAccount(account.account);
-
-				setIsOnline(account.isOnline);
 
 				setCapes(account.account.cosmetics.capes);
 				setWings(account.account.cosmetics.wings);
@@ -111,7 +108,7 @@ function Account() {
 				padding="15px 20px 25px 20px"
 				borderRadius="lg"
 				h={"auto"}
-				maxHeight={["auto", "572px"]}
+				maxHeight={["auto", "600px"]}
 			>
 				<Center>
 					<Center as={Stack} direction="row" spacing={1}>
@@ -145,7 +142,7 @@ function Account() {
 								</Text>
 							</Center>
 						</Box>
-						{isOnline && <Text color="green">online</Text>}
+						{account?.is_online && <Text color="green">online</Text>}
 					</Center>
 				</Center>
 				<Center>
@@ -168,6 +165,16 @@ function Account() {
 							>
 								silentclient.net/?u={account?.original_username}
 							</Link>
+						</Text>
+					</Stack>
+					<Stack direction="row" justifyContent="space-between">
+						<Text color="white" opacity="0.5">
+							Last Online:
+						</Text>
+						<Text color="white">
+							{account?.last_online
+								? moment(account.last_online).format("L")
+								: "N/A"}
 						</Text>
 					</Stack>
 					<Stack direction="row" justifyContent="space-between">

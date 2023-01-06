@@ -7,6 +7,8 @@ interface UserData {
 	email: string;
 	original_username: string;
 	is_admin: number;
+	is_online: number;
+	last_online: string;
 	created_at: string;
 }
 
@@ -22,6 +24,8 @@ function setAuth(user: UserData) {
 			username: user.username,
 			original_username: user.original_username,
 			is_admin: user.is_admin,
+			is_online: user.is_online,
+			last_online: user.last_online,
 			created_at: user.created_at,
 		})
 	);
@@ -104,6 +108,8 @@ async function login(username: string, password: string) {
 			email: user.account.email,
 			original_username: user.account.original_username,
 			is_admin: user.account.is_admin,
+			is_online: user.account.is_online,
+			last_online: user.account.last_online,
 			created_at: user.account.created_at,
 		};
 
@@ -146,6 +152,8 @@ async function register(username: string, email: string, password: string) {
 			username: user.account.username,
 			original_username: user.account.original_username,
 			is_admin: user.account.is_admin,
+			is_online: user.account.is_online,
+			last_online: user.account.last_online,
 			created_at: user.account.created_at,
 		};
 
@@ -186,6 +194,8 @@ async function updateAuth() {
 			email: res.account.email,
 			original_username: res.account.original_username,
 			is_admin: res.account.is_admin,
+			is_online: res.account.is_online,
+			last_online: res.account.last_online,
 			created_at: res.account.created_at,
 		};
 
