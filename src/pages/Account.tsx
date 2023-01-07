@@ -163,7 +163,7 @@ function Account() {
 								color="#2caddc"
 								href={`https://silentclient.net/u/${account?.original_username}`}
 							>
-								silentclient.net/?u={account?.original_username}
+								silentclient.net/u/{account?.original_username}
 							</Link>
 						</Text>
 					</Stack>
