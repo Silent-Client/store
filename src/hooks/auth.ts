@@ -10,6 +10,8 @@ interface UserData {
 	is_online: number;
 	last_online: string;
 	created_at: string;
+	is_plus: number;
+	plus_expiration: string;
 }
 
 const Store = window.localStorage;
@@ -27,6 +29,8 @@ function setAuth(user: UserData) {
 			is_online: user.is_online,
 			last_online: user.last_online,
 			created_at: user.created_at,
+			is_plus: user.is_plus,
+			plus_expiration: user.plus_expiration,
 		})
 	);
 }
@@ -111,6 +115,8 @@ async function login(username: string, password: string) {
 			is_online: user.account.is_online,
 			last_online: user.account.last_online,
 			created_at: user.account.created_at,
+			is_plus: user.account.is_plus,
+			plus_expiration: user.account.plus_expiration,
 		};
 
 		setAuth(userData);
@@ -155,6 +161,8 @@ async function register(username: string, email: string, password: string) {
 			is_online: user.account.is_online,
 			last_online: user.account.last_online,
 			created_at: user.account.created_at,
+			is_plus: user.account.is_plus,
+			plus_expiration: user.account.plus_expiration,
 		};
 
 		setAuth(userData);
@@ -197,6 +205,8 @@ async function updateAuth() {
 			is_online: res.account.is_online,
 			last_online: res.account.last_online,
 			created_at: res.account.created_at,
+			is_plus: res.account.is_plus,
+			plus_expiration: res.account.plus_expiration,
 		};
 
 		setAuth(userData);

@@ -10,8 +10,8 @@ import {
 import { Title } from "react-head-meta";
 import React from "react";
 import { useSearchParams, Link as RLink } from "react-router-dom";
-import NotFound from "./NotFound";
-import { getUser } from "../hooks/auth";
+import NotFound from "../NotFound";
+import { getUser } from "../../hooks/auth";
 import axios from "axios";
 
 function Success() {
@@ -30,7 +30,7 @@ function Success() {
 				}
 
 				const { data: res } = await axios.post(
-					"https://api.silentclient.net/store/check_pay",
+					"https://api.silentclient.net/plus/check_pay",
 					{
 						id: searchParams.get("id"),
 					},
@@ -67,19 +67,19 @@ function Success() {
 				<Stack spacing={16}>
 					<Stack spacing={2}>
 						<Center>
-							<Heading textAlign="center" size="xl">
+							<Heading size="xl" textAlign="center">
 								Thank you for your purchase
 							</Heading>
 						</Center>
 						<Center>
-							<Text textAlign="center" fontSize="xl">
-								A cosmetic item has been added to your account
+							<Text fontSize="xl" textAlign="center">
+								Silent+ subscription has been activated on your account.
 							</Text>
 						</Center>
 					</Stack>
 					<Center>
-						<RLink to="/">
-							<Button>Back to home</Button>
+						<RLink to="/plus">
+							<Button>Go to Silent+</Button>
 						</RLink>
 					</Center>
 				</Stack>

@@ -25,6 +25,7 @@ function StoreItem({
 	username,
 	selectedItem,
 	setSelectedItem,
+	isPlusPromo,
 }: {
 	data: StoreItemType;
 	type: "capes" | "wings" | "icons";
@@ -32,6 +33,7 @@ function StoreItem({
 	username?: string;
 	selectedItem?: number;
 	setSelectedItem?: any;
+	isPlusPromo?: boolean;
 }) {
 	const navigate = useNavigate();
 
@@ -147,10 +149,36 @@ function StoreItem({
 					<Text fontSize={16} fontWeight={600} color="white">
 						{data.name}
 					</Text>
-					{pageType === "store" && <Text fontSize={16}>{data.price}₽</Text>}
+					{pageType === "store" && (
+						<Text fontSize={16}>
+							<span
+								style={{
+									textDecoration:
+										getUser()?.is_plus || isPlusPromo ? "line-through" : "none",
+								}}
+							>
+								{data.price}₽
+							</span>{" "}
+							{getUser()?.is_plus || isPlusPromo ? (
+								<span>{Math.round(data.price - data.price * 0.1)}₽</span>
+							) : (
+								""
+							)}
+						</Text>
+					)}
 				</Stack>
 				{(pageType === "store" && (
-					<Button w={["full", "auto"]} isDisabled={isLoading} onClick={buyItem}>
+					<Button
+						w={["full", "auto"]}
+						isDisabled={isLoading}
+						onClick={
+							isPlusPromo
+								? () => {
+										console.log("Is preview!");
+								  }
+								: buyItem
+						}
+					>
 						Buy
 					</Button>
 				)) || (

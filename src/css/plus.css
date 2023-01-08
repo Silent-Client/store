@@ -1,0 +1,31 @@
+.plus_feature_image {
+	width: 100%;
+}
+
+@media screen and (min-width: 30em) {
+	.plus_feature_image {
+		width: 800px;
+	}
+}
+
+@media screen and (min-width: 102em) {
+	.plus_feature_image {
+		width: 1000px;
+	}
+}
+
+@media screen and (min-width: 122em) {
+	.plus_feature_image {
+		width: 1600px;
+	}
+}
+
+@media screen and (min-width: 142em) {
+	.plus_feature_image {
+		width: 2600px;
+	}
+}
+
+.plus_buy_button:hover {
+	text-decoration: none !important;
+}

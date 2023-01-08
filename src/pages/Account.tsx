@@ -25,6 +25,7 @@ import NotFound from "./NotFound";
 import defaultIcon from "../assets/images/logo.svg";
 import moment from "moment";
 import { Title } from "react-head-meta";
+import plus_icon from "../assets/images/plus/plus_icon.svg";
 
 function Account() {
 	const { username } = useParams();
@@ -38,6 +39,7 @@ function Account() {
 	const [icons, setIcons] = React.useState<StoreItemType[] | null>(null);
 
 	const [selectedIcon, setSelectedIcon] = React.useState<number>(0);
+	const [selectedPlusIcon, setSelectedPlusIcon] = React.useState<number>(0);
 	const [selectedWings, setSelectedWings] = React.useState<number>(0);
 	const [selectedCape, setSelectedCape] = React.useState<number>(0);
 
@@ -60,6 +62,7 @@ function Account() {
 				setSelectedIcon(account.account.selected_icon);
 				setSelectedWings(account.account.selected_wings);
 				setSelectedCape(account.account.selected_cape);
+				setSelectedPlusIcon(account.account.plus_icon);
 			} catch (err: any) {
 				setNotFound(true);
 				if (err?.response && err.response?.data && err.response.data?.errors) {
@@ -124,7 +127,9 @@ function Account() {
 								}}
 								draggable="false"
 								src={
-									selectedIcon !== 0
+									selectedPlusIcon
+										? plus_icon
+										: selectedIcon !== 0
 										? `https://cosmetics.silentclient.net/icons/${account?.username}.png`
 										: defaultIcon
 								}

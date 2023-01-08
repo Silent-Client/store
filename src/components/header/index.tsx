@@ -92,6 +92,23 @@ function Header() {
 									Nametag Icons
 								</Link>
 							</RLink>
+							<RLink to="/plus">
+								<Link
+									color={
+										location.pathname === "/plus"
+											? "white"
+											: "rgb(114, 114, 114)"
+									}
+									fontSize="18px"
+									fontWeight={600}
+									_hover={{
+										color: "white",
+										textDecoration: "none",
+									}}
+								>
+									Silent<span className="plus">+</span>
+								</Link>
+							</RLink>
 						</Stack>
 					</Center>
 					<Center
@@ -121,6 +138,17 @@ function Header() {
 										to="/account"
 									>
 										Account
+									</MenuItem>
+									<MenuItem
+										bgColor="transparent"
+										_hover={{
+											bgColor: "#131313",
+										}}
+										display={["flex", "none"]}
+										as={RLink}
+										to="/plus"
+									>
+										Silent+
 									</MenuItem>
 									<MenuItem
 										bgColor="transparent"

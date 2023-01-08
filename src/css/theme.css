@@ -18,3 +18,11 @@ a:focus {
 button:focus {
 	box-shadow: none !important;
 }
+
+.plus {
+	color: #3bbe54;
+}
+
+* {
+	scroll-behavior: smooth;
+}

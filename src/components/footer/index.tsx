@@ -105,33 +105,9 @@ function Footer() {
 								textDecoration: "none",
 							}}
 							as={RLink}
-							to="/capes"
+							to="/plus"
 						>
-							Capes
-						</Link>
-						<Link
-							color="rgb(114, 114, 114)"
-							fontWeight={600}
-							_hover={{
-								color: "white",
-								textDecoration: "none",
-							}}
-							as={RLink}
-							to="/wings"
-						>
-							Wings
-						</Link>
-						<Link
-							color="rgb(114, 114, 114)"
-							fontWeight={600}
-							_hover={{
-								color: "white",
-								textDecoration: "none",
-							}}
-							as={RLink}
-							to="/icons"
-						>
-							Nametag Icons
+							Silent<span className="plus">+</span>
 						</Link>
 					</Stack>
 				</Center>
