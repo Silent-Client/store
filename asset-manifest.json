@@ -1,17 +1,19 @@
 {
   "files": {
-    "main.css": "/static/css/main.9581af5b.css",
-    "main.js": "/static/js/main.68310d7e.js",
-    "static/js/27.10004d4a.chunk.js": "/static/js/27.10004d4a.chunk.js",
+    "main.css": "/static/css/main.1b7a7e4c.css",
+    "main.js": "/static/js/main.50b7add7.js",
+    "static/js/27.5350bb4a.chunk.js": "/static/js/27.5350bb4a.chunk.js",
     "static/media/OnestBold1602-hint.ttf": "/static/media/OnestBold1602-hint.94a0458cbbe9d212ff5d.ttf",
     "static/media/OnestRegular1602-hint.ttf": "/static/media/OnestRegular1602-hint.851b8f253e8728ec40e3.ttf",
+    "static/media/custom_cape.png": "/static/media/custom_cape.3ac852fac2a968b9a293.png",
     "static/media/full_logo.svg": "/static/media/full_logo.d7ab235b7008f9f68f8c911aa508c8c6.svg",
+    "static/media/plus_icon.svg": "/static/media/plus_icon.3e071734f5aca12b0bda4af7a78613f6.svg",
     "static/media/logo.svg": "/static/media/logo.3e8665b09a29fa0ca47fa06060b62d28.svg",
     "static/media/minecraft.woff2": "/static/media/minecraft.44ec47335dcfa8c7ea7a.woff2",
     "index.html": "/index.html"
   },
   "entrypoints": [
-    "static/css/main.9581af5b.css",
-    "static/js/main.68310d7e.js"
+    "static/css/main.1b7a7e4c.css",
+    "static/js/main.50b7add7.js"
   ]
 }
