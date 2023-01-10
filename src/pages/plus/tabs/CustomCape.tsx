@@ -10,13 +10,13 @@ import {
 	Checkbox,
 	Spinner,
 	Container,
+	Text,
 	Button,
 } from "@chakra-ui/react";
 import React from "react";
 import { SkinViewer } from "skinview3d";
 import { getUser, UserData } from "../../../hooks/auth";
 import FilePicker from "chakra-ui-file-picker";
-import custom_cape from "../../../assets/images/plus/custom_cape.png";
 import axios from "axios";
 
 function CustomCape() {
@@ -24,6 +24,7 @@ function CustomCape() {
 	const [isLoading, setIsLoading] = React.useState<boolean>(false);
 	const [isLoadingFirst, setIsLoadingFirst] = React.useState<boolean>(true);
 	const [enabled, setEnabled] = React.useState<boolean>(false);
+	const [error, setError] = React.useState<boolean>(false);
 	const toast = useToast();
 
 	const [preview, setPreview] = React.useState<string>(
@@ -99,6 +100,7 @@ function CustomCape() {
 		getData();
 	}, []);
 	const changePreview = async (files: File[]) => {
+		setError(false);
 		const skinViewer = new SkinViewer({
 			width: 685,
 			height: 685,
@@ -192,12 +194,15 @@ function CustomCape() {
 							spacing={2}
 						>
 							<Heading size="lg">Preview</Heading>
-							<Image
-								src={preview}
-								fallbackSrc={custom_cape}
-								w="230px"
-								h="230px"
-							/>
+							{(!error && (
+								<Image
+									src={preview}
+									onError={() => setError(true)}
+									onLoad={() => setError(false)}
+									w="230px"
+									h="230px"
+								/>
+							)) || <Text>Texture not found</Text>}
 						</Stack>
 					</Box>
 					<Box justifyContent={["center", "right"]}>
