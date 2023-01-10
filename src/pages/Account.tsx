@@ -43,6 +43,8 @@ function Account() {
 	const [selectedWings, setSelectedWings] = React.useState<number>(0);
 	const [selectedCape, setSelectedCape] = React.useState<number>(0);
 
+	const [playtime, setPlaytime] = React.useState<string>("");
+
 	const toast = useToast();
 
 	React.useEffect(() => {
@@ -63,6 +65,20 @@ function Account() {
 				setSelectedWings(account.account.selected_wings);
 				setSelectedCape(account.account.selected_cape);
 				setSelectedPlusIcon(account.account.plus_icon);
+				let playtime = "";
+				if (account.account.overvall_playtime < 60) {
+					playtime = `${(account.account.overvall_playtime / 60).toFixed(
+						1
+					)} minutes`;
+				} else {
+					playtime = `${(account.account.overvall_playtime / 60 / 60).toFixed(
+						1
+					)} hours`;
+				}
+				if (account.account.overvall_playtime === 0) {
+					playtime = "0 hours";
+				}
+				setPlaytime(playtime);
 			} catch (err: any) {
 				setNotFound(true);
 				if (err?.response && err.response?.data && err.response.data?.errors) {
@@ -111,7 +127,7 @@ function Account() {
 				padding="15px 20px 25px 20px"
 				borderRadius="lg"
 				h={"auto"}
-				maxHeight={["auto", "600px"]}
+				maxHeight={["auto", "652px"]}
 			>
 				<Center>
 					<Center as={Stack} direction="row" spacing={1}>
@@ -187,6 +203,12 @@ function Account() {
 							Join Date:
 						</Text>
 						<Text color="white">{moment(account?.created_at).format("L")}</Text>
+					</Stack>
+					<Stack direction="row" justifyContent="space-between">
+						<Text color="white" opacity="0.5">
+							Overall Playtime:
+						</Text>
+						<Text color="white">{playtime}</Text>
 					</Stack>
 					<Stack direction="row" justifyContent="space-between">
 						<Text color="white" opacity="0.5">
