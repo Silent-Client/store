@@ -66,7 +66,7 @@ function Account() {
 				setSelectedCape(account.account.selected_cape);
 				setSelectedPlusIcon(account.account.plus_icon);
 				let playtime = "";
-				if (account.account.overvall_playtime < 60) {
+				if (account.account.overvall_playtime < 600) {
 					playtime = `${(account.account.overvall_playtime / 60).toFixed(
 						1
 					)} minutes`;
